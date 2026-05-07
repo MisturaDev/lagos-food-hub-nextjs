@@ -1,8 +1,4 @@
-import { requireRole } from "@/lib/auth/session";
-
-export default async function BeneficiaryDashboard() {
-  await requireRole("beneficiary");
-
+export default function BeneficiaryDashboard() {
   return (
     <main className="mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-6xl items-center justify-center px-4 py-10">
       <section className="w-full rounded-xl border border-green-200 bg-white p-6 shadow-sm md:p-10">

@@ -13,7 +13,7 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
 
@@ -23,30 +23,9 @@ export default function LoginPage() {
     }
 
     setLoading(true);
-    try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, role }),
-      });
-
-      const data = (await response.json()) as {
-        error?: string;
-        user?: { role: Role };
-      };
-
-      if (!response.ok || !data.user) {
-        setError(data.error ?? "Login failed.");
-        return;
-      }
-
-      router.push(`/${data.user.role}`);
-      router.refresh();
-    } catch {
-      setError("Unable to connect. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    router.push(`/${role}`);
+    router.refresh();
+    setLoading(false);
   }
 
   return (

@@ -29,7 +29,7 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
 
@@ -49,33 +49,9 @@ export default function RegisterPage() {
     }
 
     setLoading(true);
-    try {
-      const response = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone || null,
-          password: form.password,
-          role: form.role,
-        }),
-      });
-
-      const data = (await response.json()) as { error?: string };
-
-      if (!response.ok) {
-        setError(data.error ?? "Registration failed.");
-        return;
-      }
-
-      router.push(`/${form.role}`);
-      router.refresh();
-    } catch {
-      setError("Unable to connect. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    router.push(`/${form.role}`);
+    router.refresh();
+    setLoading(false);
   }
 
   return (
