@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f0fdf4;
+  --background: #f8fafc;
   --foreground: #0f172a;
-  --primary-green: #16a34a;
-  --secondary-green: #22c55e;
-  --accent-yellow: #facc15;
+  --primary-green: #0f766e;
+  --secondary-green: #14b8a6;
+  --accent-yellow: #f59e0b;
 }
 
 @theme inline {
@@ -19,7 +19,14 @@
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 10% 10%, #ccfbf1 0%, transparent 30%),
+    radial-gradient(circle at 90% 30%, #fef3c7 0%, transparent 25%),
+    var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
 }
