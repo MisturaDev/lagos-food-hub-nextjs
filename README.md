@@ -6,6 +6,33 @@ The platform connects food donors, beneficiaries, volunteers and administrators 
 ---
 
 ## Features
+
+### Authentication & Account System
+- Login and registration flow
+- Multi-role account architecture
+- Active role switching
+- Session-based dashboard access
+
+### Dashboard Experience
+- Central dashboard overview
+- Role-based workspace navigation
+- Notifications center
+- Profile and security management
+
+### Workspaces
+- Donor workspace
+- Beneficiary workspace
+- Volunteer workspace
+- Admin management workspace
+
+### Responsive UI
+- Mobile-friendly dashboard layout
+- Sidebar drawer for mobile devices
+- Responsive navigation and cards
+
+---
+
+## Features
 - Role-based access for donors, beneficiaries, volunteers and admins
 - Donor dashboard for food donation management
 - Beneficiary dashboard for food request tracking
