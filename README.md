@@ -21,6 +21,17 @@ The platform connects food donors, beneficiaries, volunteers and administrators 
 
 ---
 
+## Future Improvements
+- Food donation management
+- Request approval system
+- Delivery assignment flow
+- Real-time notifications
+- Analytics dashboard
+- Maps and location support
+- Image uploads
+- API/database integration
+
+
 ## Getting Started
 
 1. Install dependencies:
