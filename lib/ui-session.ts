@@ -5,10 +5,11 @@ export const ACCOUNT_NAME_KEY = "lfh_account_name";
 export const PROFILE_KEY = "lfh_profile";
 
 export type ProfileState = {
-  firstName: string;
-  lastName: string;
+  fullName: string;
   email: string;
   phone: string;
+  location: string;
+  bio: string;
 };
 
 export function getActiveRole(): Role | null {
@@ -33,22 +34,23 @@ export function setAccountName(name: string) {
 
 export function getProfile(): ProfileState {
   if (typeof window === "undefined") {
-    return { firstName: "", lastName: "", email: "", phone: "" };
+    return { fullName: "", email: "", phone: "", location: "", bio: "" };
   }
 
   const raw = localStorage.getItem(PROFILE_KEY);
-  if (!raw) return { firstName: "", lastName: "", email: "", phone: "" };
+  if (!raw) return { fullName: "", email: "", phone: "", location: "", bio: "" };
 
   try {
     const parsed = JSON.parse(raw) as Partial<ProfileState>;
     return {
-      firstName: parsed.firstName ?? "",
-      lastName: parsed.lastName ?? "",
+      fullName: parsed.fullName ?? "",
       email: parsed.email ?? "",
       phone: parsed.phone ?? "",
+      location: parsed.location ?? "",
+      bio: parsed.bio ?? "",
     };
   } catch {
-    return { firstName: "", lastName: "", email: "", phone: "" };
+    return { fullName: "", email: "", phone: "", location: "", bio: "" };
   }
 }
 
