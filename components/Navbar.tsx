@@ -39,6 +39,24 @@ export function Navbar() {
               );
             })}
             <Link
+              href="/notifications"
+              aria-label="Notifications"
+              className="px-1 py-1 text-[#16A34A] transition hover:text-[#15803D]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="h-6 w-6"
+                aria-hidden="true"
+              >
+                <path d="M15 17h5l-1.4-1.4a2 2 0 0 1-.6-1.4V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5" />
+                <path d="M10 17a2 2 0 0 0 4 0" />
+              </svg>
+            </Link>
+            <Link
               href="/login"
               className="rounded-md border border-[#16A34A] px-3 py-1.5 text-sm font-medium text-[#16A34A] transition hover:bg-green-50"
             >
@@ -69,6 +87,15 @@ export function Navbar() {
                 </Link>
               );
             })}
+            <div className="flex gap-2 pt-1">
+              <Link
+                href="/notifications"
+                className="w-full px-3 py-2 text-center text-sm font-medium text-[#16A34A] transition hover:text-[#15803D]"
+                onClick={() => setOpen(false)}
+              >
+                Notifications
+              </Link>
+            </div>
             <div className="flex gap-2 pt-1">
               <Link
                 href="/login"
