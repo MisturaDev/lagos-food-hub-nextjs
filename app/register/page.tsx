@@ -50,7 +50,7 @@ export default function RegisterPage() {
 
     setLoading(true);
     setTimeout(() => {
-      router.push("/choose-role");
+      router.push("/dashboard");
       router.refresh();
       setLoading(false);
     }, 500);

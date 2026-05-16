@@ -25,7 +25,7 @@ export default function LoginPage() {
 
     setLoading(true);
     setTimeout(() => {
-      router.push("/choose-role");
+      router.push("/dashboard");
       router.refresh();
       setLoading(false);
     }, 500);
