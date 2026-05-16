@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
+import { setAccountName } from "@/lib/ui-session";
 
 type RegisterState = {
   name: string;
@@ -50,6 +51,7 @@ export default function RegisterPage() {
 
     setLoading(true);
     setTimeout(() => {
+      setAccountName(form.name.trim().split(/\s+/)[0] || "User");
       router.push("/dashboard");
       router.refresh();
       setLoading(false);
