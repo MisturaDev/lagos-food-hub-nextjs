@@ -4,10 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks } from "@/lib/ui";
+import { useActiveRole } from "@/lib/use-ui-session";
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const role = useActiveRole();
+  const activeRole = role ? role[0].toUpperCase() + role.slice(1) : "Not selected";
 
   return (
     <header className="border-b border-green-200 bg-white/95 backdrop-blur">
@@ -25,6 +28,9 @@ export function Navbar() {
             Menu
           </button>
           <div className="hidden items-center gap-2 md:flex">
+            <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-[#166534]">
+              Active Role: {activeRole}
+            </span>
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -69,6 +75,9 @@ export function Navbar() {
                 </Link>
               );
             })}
+            <div className="rounded-md bg-green-100 px-3 py-2 text-xs font-semibold text-[#166534]">
+              Active Role: {activeRole}
+            </div>
             <div className="flex gap-2 pt-1">
               <Link
                 href="/login"

@@ -1,10 +1,24 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
-import { roleOptions } from "@/lib/ui";
+import { Button } from "@/components/ui/Button";
+import { Role, roleOptions } from "@/lib/ui";
+import { setActiveRole } from "@/lib/ui-session";
+import { useAccountName, useActiveRole } from "@/lib/use-ui-session";
 
 export default function DashboardPage() {
+  const router = useRouter();
   const selectableRoles = roleOptions.filter((role) => role.value !== "admin");
+  const activeRole = useActiveRole();
+  const accountName = useAccountName();
+
+  function chooseRole(role: Role) {
+    setActiveRole(role);
+    router.push(`/${role}`);
+  }
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-10">
@@ -18,10 +32,10 @@ export default function DashboardPage() {
       <section className="mt-4 rounded-2xl border border-green-100 bg-gradient-to-br from-white via-green-50 to-lime-50 p-8 shadow-sm">
         <Badge tone="success">Workspace Hub</Badge>
         <h1 className="mt-3 text-3xl font-black tracking-tight text-[#166534] md:text-4xl">
-          Welcome to Your Dashboard
+          Welcome, {accountName}
         </h1>
-        <p className="mt-2 max-w-2xl text-sm text-slate-700 md:text-base">
-          Use one account, then choose where you want to work now. You can switch roles anytime.
+        <p className="mt-2 text-sm font-semibold text-slate-700 md:text-base">
+          Active Role: {activeRole ? activeRole[0].toUpperCase() + activeRole.slice(1) : "Not selected"}
         </p>
       </section>
 
@@ -30,12 +44,9 @@ export default function DashboardPage() {
           <Card key={role.value} title={role.label}>
             <div className="space-y-3">
               <p className="line-clamp-2 text-sm text-slate-600">{role.description}</p>
-              <Link
-                href={`/${role.value}`}
-                className="inline-flex rounded-md bg-[#16A34A] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[#15803D]"
-              >
+              <Button onClick={() => chooseRole(role.value)} className="px-3 py-1.5 text-xs">
                 Continue as {role.label}
-              </Link>
+              </Button>
             </div>
           </Card>
         ))}
